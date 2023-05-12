@@ -1,4 +1,4 @@
-package pl.jordanmruczynski.receiver;
+package pl.jordanmruczynski.receiver.model;
 
 import java.io.Serializable;
 

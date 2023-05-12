@@ -1,4 +1,4 @@
-package pl.jordanmruczynski.receiver;
+package pl.jordanmruczynski.receiver.controller;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -6,6 +6,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.jordanmruczynski.receiver.model.Notification;
 
 @RestController
 public class MessageController {
@@ -27,6 +28,7 @@ public class MessageController {
 
     @RabbitListener(queues = "testqueue")
     public void listenerMessage(Notification notification) {
-        System.out.println("Tytul powiadomienia: " + notification.getTitle());
+        System.out.println("--POWIADOMIENIE ODEBRANE --");
+        System.out.println(notification.getTitle() + ", " + notification.getEmail() + ", " + notification.getBody());
     }
 }
